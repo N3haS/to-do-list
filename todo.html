@@ -50,7 +50,7 @@
       width: 70%;
       padding: 8px;
       margin-right: 5px;
-      border: 1px solid #ccc;
+      border: 2px solid green;
       border-radius: 4px;
     }
 
@@ -75,37 +75,39 @@
       text-size-adjust: 30px;
     }
   </style>
+</head>
+<body>
+  <h1 class="title">To Do: <input id="dayInput" contenteditable="true" placeholder="Type date"></h1>
+  <div id="todo-container">
+    <input type="text" id="taskInput" placeholder="Type your task...">
+    <p style="font-size: 12px; font-style: italic; color: gray; padding: 0px; margin-bottom: 0px;">To add, press enter key</p>
+    <p style="font-size: 12px; font-style: italic; color: gray; margin-top: 3px;">To delete, press on task</p>
+  </div>
+
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const input = document.getElementById("taskInput");
-      const addButton = document.getElementById("addButton");
       const todoContainer = document.getElementById("todo-container");
 
-      addButton.addEventListener("click", function () {
-        const taskText = input.value.trim();
+      input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          const taskText = input.value.trim();
 
-        if (taskText !== "") {
-          const taskElement = document.createElement("div");
-          taskElement.classList.add("task");
-          taskElement.textContent = taskText;
+          if (taskText !== "") {
+            const taskElement = document.createElement("div");
+            taskElement.classList.add("task");
+            taskElement.textContent = taskText;
 
-          taskElement.addEventListener("click", function () {
-            taskElement.remove();
-          });
+            taskElement.addEventListener("click", function () {
+              taskElement.remove();
+            });
 
-          todoContainer.appendChild(taskElement);
-          input.value = "";
+            todoContainer.appendChild(taskElement);
+            input.value = "";
+          }
         }
       });
     });
   </script>
-</head>
-<body>
-  <h1 class = "title">To Do: <input id="dayInput" contenteditable="true" placeholder="Type date"> </imput></h1>
-  <div id="todo-container">
-    <input type="text" id="taskInput" placeholder="Type your task...">
-    <button id="addButton">Add</button>
-    <p style="font-size: 12px; font-style: italic; color: gray;"> To delete, press on task</p>
-  </div>
 </body>
 </html>
