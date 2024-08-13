@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .title {
+      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color: rgb(64, 3, 3);
+      font-size: 55px;
+      text-align: center;
+      margin-top: 25px;
+      padding: 0;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-left: 30px;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f27070;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #todo-container {
+      width: 300px;
+      text-align: center;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: #ffffffc8;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #dayInput{
+      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color: rgb(64, 3, 3);
+      padding: 0;
+      font-size: 35px;
+      font-weight: bolder;
+      background-color: #f27070;
+      border: 0;
+    }
+    #taskInput {
+      width: 70%;
+      padding: 8px;
+      margin-right: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 8px;
+      border: none;
+      background-color: #4caf50;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #116e16;
+    }
+
+    .task {
+      margin: 10px 0;
+      padding: 0px;
+      border-radius: 4px;
+      cursor: pointer;
+      text-size-adjust: 30px;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const input = document.getElementById("taskInput");
+      const addButton = document.getElementById("addButton");
+      const todoContainer = document.getElementById("todo-container");
+
+      addButton.addEventListener("click", function () {
+        const taskText = input.value.trim();
+
+        if (taskText !== "") {
+          const taskElement = document.createElement("div");
+          taskElement.classList.add("task");
+          taskElement.textContent = taskText;
+
+          taskElement.addEventListener("click", function () {
+            taskElement.remove();
+          });
+
+          todoContainer.appendChild(taskElement);
+          input.value = "";
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1 class = "title">To Do: <input id="dayInput" contenteditable="true" placeholder="Type date"> </imput></h1>
+  <div id="todo-container">
+    <input type="text" id="taskInput" placeholder="Type your task...">
+    <button id="addButton">Add</button>
+    <p style="font-size: 12px; font-style: italic; color: gray;"> To delete, press on task</p>
+  </div>
+</body>
+</html>
