@@ -1,5 +1,6 @@
 # to-do-list
 A simple to do list hosted on a localhost website itself. To use it, please download the html file and execute it. 
+
 Recommended for WEBSITES.
 
 This file consists of a CSS div and uses React elements to make it work. It is an easy tool that can be used by everybody regardless of whether they have CS knowledge or not.
